@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Página que roda no servidor - rode no endereço http://localhost:8080/</title>
+  <!-- você pode usar a extensão Web Server for Chrome para gerar um servidor estatico -->
+</head>
+<body>
+  <button id="btn">Clique para disparar um evento customizado</button>
+
+  <script>
+    // Criando evento personalizado e disparando pelo botao para content script interceptar
+    
+    btn.addEventListener('click', () => {
+      const event = new CustomEvent('extensao', {
+        'detail': { msg: 'está é a mensagem enviada ao disparar o evento personalizado'}
+      })
+      dispatchEvent(event)
+    });
+  </script>
+</body>
+</html>

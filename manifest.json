@@ -1,0 +1,33 @@
+{
+    "name": "Minha extensão chrome",
+    "description": "Extensão para chrome criada durante mini curso",
+    "version": "0.1",
+    "manifest_version": 2,
+    "browser_action": {
+        "default_popup": "popup.html",
+        "default_icon": "icon.png"
+    },
+    "permissions": [
+        "tabs",
+        "http://*/*",
+        "https://*/*"
+    ],
+    "background": {
+        "scripts": ["background-script.js"]
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://www.google.com/*"],
+            "js": ["injetar-no-google.js"],
+            "run_at": "document_end"
+        },
+        {
+            "matches": ["http://localhost:8080/"],
+            "js": ["content-script.js"]
+        },
+        {
+            "matches": ["http://localhost:8080/pesquisa.html"],
+            "js": ["content-script.js"]
+        }
+    ]
+}

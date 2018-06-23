@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Pesquisa google - Comunicação entre abas usando mensagens</title>
+</head>
+<body>
+  <input type="search" id="search">
+  <button id="btn">Pesquisar</button>
+  <script>
+    btn.addEventListener('click', () => {
+      const event = new CustomEvent('pesquisa', {
+        'detail': { search: search.value}
+      })
+      dispatchEvent(event)
+    });
+    search.onkeydown = e => { 
+      if (e.keyCode == 13) btn.click()
+    }
+  </script>
+</body>
+</html>
